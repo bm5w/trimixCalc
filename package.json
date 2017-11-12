@@ -1,0 +1,19 @@
+{
+  "name": "trimixcalc",
+  "version": "1.0.0",
+  "description": "A calculator for calculating how to blend trimix (helium, oxygen and nitrogen) for scuba diving.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bm5w/trimixCalc.git"
+  },
+  "author": "Mark Saiget",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bm5w/trimixCalc/issues"
+  },
+  "homepage": "https://github.com/bm5w/trimixCalc#readme"
+}
