@@ -1,20 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-require("./index.css");
-
-class App extends React.Component {
-    constructor(props){
-        super(props);
-    }
-
-    render() {
-        return (
-            <div>
-                Trimix Calculator
-            </div>
-        )
-    }
-}
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
