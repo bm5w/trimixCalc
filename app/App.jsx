@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Ean from './components/Ean.jsx';
+import Trimix from './components/Trimix.jsx';
 require("./index.css");
 
 class App extends React.Component {
@@ -11,8 +12,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h3>Trimix Calculator</h3>
                 <Ean/>
+                <Trimix/>
             </div>
         )
     }
