@@ -4,7 +4,10 @@
   "description": "A calculator for calculating how to blend trimix (helium, oxygen and nitrogen) for scuba diving.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "NODE_ENV='production' webpack -p",
+    "deploy": "npm run build"
+
   },
   "babel": {
     "presets": [
