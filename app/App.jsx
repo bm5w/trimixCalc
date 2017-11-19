@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Ean from './components/Ean.jsx';
-import Trimix from './components/Trimix.jsx';
+import Switch from './components/Switch.jsx';
 require("./index.css");
 
 class App extends React.Component {
@@ -12,8 +11,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Ean/>
-                <Trimix/>
+                <Switch/>
             </div>
         )
     }
