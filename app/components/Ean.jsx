@@ -42,7 +42,7 @@ class Ean extends React.Component {
         return (
             <div className='center'>
               <div>
-                <h3>EAN Calculator</h3>
+                <h2>EAN Calculator</h2>
                 <div>
                     <table>
                       <thead>

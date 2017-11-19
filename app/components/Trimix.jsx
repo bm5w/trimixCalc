@@ -33,46 +33,55 @@ class Cost extends React.Component {
               <h4>Cost</h4>
               <div className='center'>
                 <table>
-                    <thead>
+                     <thead>
                         <tr>
-                            <th>Cost ($/Ft<sup>3</sup>)</th>
-                            <th>Volume (Ft<sup>3</sup>)</th>
-                            <th>Cost ($)</th>
+                          <th></th>
+                          <th>O<sub>2</sub></th>
+                          <th>He<sub>2</sub></th>
                         </tr>
                      </thead>
                      <tbody>
                        <tr>
                             <td>
-                                <NumberInput
-                                    onChange={this.onChange}
-                                    label='He<sub>2</sub>'
-                                    id='He2Cost'
-                                    value={this.state.He2Cost}
-                                    step='0.01'
-                                />
+                                Cost ($/Ft<sup>3</sup>)
                             </td>
-                            <td>
-                                {He2V}    
-                            </td>
-                            <td>
-                                <span className='bold'>{He2Cost}</span>    
-                            </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <NumberInput
                                     onChange={this.onChange}
-                                    label='O<sub>2</sub>'
                                     id='O2Cost'
                                     value={this.state.O2Cost}
                                     step='0.01'
                                 />
                             </td>
                             <td>
+                                <NumberInput
+                                    onChange={this.onChange}
+                                    id='He2Cost'
+                                    value={this.state.He2Cost}
+                                    step='0.01'
+                                />
+                            </td>
+                       </tr>
+                       <tr>
+                            <td>
+                                Volume (Ft<sup>3</sup>)
+                            </td>
+                            <td>
                                 {O2V}
                             </td>
                             <td>
+                                {He2V}    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Cost ($)
+                            </td>
+                            <td>
                                 <span className='bold'>{O2Cost}</span>    
+                            </td>
+                            <td>
+                                <span className='bold'>{He2Cost}</span>    
                             </td>
                         </tr>
                      </tbody>   
@@ -145,7 +154,7 @@ class Trimix extends React.Component {
         return (
             <div className='center'>
               <div>
-                <h3>Trimix Calculator</h3>
+                <h2>Trimix Calculator</h2>
                 <div>
                     <table>
                       <thead>

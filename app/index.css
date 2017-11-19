@@ -1,6 +1,41 @@
 body {
     background-color: grey;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
-    font-size:1.4em;
-    padding: 5px;
+    width: 100%;
+    font-size: 4vmin;
+}
+h1 {
+    font-size: 5.9vw;
+}
+h2 {
+    font-size: 4.0vw;
+}
+h3 {
+    font-size: 3.0vw;
+}
+h4 {
+    font-size: 2.5vw;
+}
+p {
+    font-size: 4vmin;
+}
+
+
+#app {
+    /* font-size:1.4em; */
+    padding: 10px;
+}
+
+@media (min-width: 500px) {
+    #app {
+        padding: 20px;
+        /* font-size: 1.5em !important; */
+    }
+}
+
+@media (min-width: 800px) {
+    #app {
+        padding: 40px;
+        /* font-size: 2em !important; */
+    }
 }
