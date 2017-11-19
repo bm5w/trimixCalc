@@ -1,5 +1,5 @@
 import React from 'react';
-
+require("./NumberInput.css");
 
 class NumberInput extends React.Component {
     constructor(props) {
@@ -14,15 +14,21 @@ class NumberInput extends React.Component {
 
     render() {
         return (
-            <div>
-                <label className='header' htmlFor={this.props.id}>{this.props.label}</label>
+            <div className='row'>
+                <label className='header' htmlFor={this.props.id}>{this.props.label}:</label>
                 <input
-                    type='text' 
+                    type='number' 
                     id={this.props.id}
                     value={this.props.value}
                     onChange={this.handleChange}
                     label={this.props.label}
+                    required
+                    min={this.props.min ? 
+                            this.props.min : undefined}
+                    max={this.props.max ? 
+                            this.props.max : undefined}
                 />
+                <span>{this.props.units}</span>
             </div>
         )
 
@@ -30,11 +36,3 @@ class NumberInput extends React.Component {
 }
 
 export default NumberInput;
-// +        <input
-//  +          id='username'
-//  +          placeholder='github username'
-//  +          type='text'
-//  +          value={this.props.value}
-//  +          autoComplete='off'
-//  +          onChange={this.handleChange}
-//  +        />
