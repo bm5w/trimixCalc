@@ -33,7 +33,7 @@ class Ean extends React.Component {
 
         let fillO2Conc = Number(this.state.fillO2/100);
         
-        let psiO2 = (Ci*Pf + fillO2Conc*Pi - fillO2Conc*Pf - Ci*Pi)/(1-fillO2Conc);
+        let psiO2 = (Cf*Pf + fillO2Conc*Pi - fillO2Conc*Pf - Ci*Pi)/(1-fillO2Conc);
         return _.round(Pi+psiO2, 0);
     }
 
@@ -43,67 +43,86 @@ class Ean extends React.Component {
             <div>
                 <h3>Ean Calculator</h3>
                 <div>
-                <NumberInput
-                    onChange={this.onChange}
-                    label='tank volume'
-                    units='ft^3'
-                    id='totalVolume'
-                    value={this.state.totalVolume}
-                />
-                <NumberInput
-                    onChange={this.onChange}
-                    label='initial pressure'
-                    units='psi'
-                    id='initialPressure'
-                    value={this.state.initialPressure}
-                    step='100'
-                />
-                <NumberInput
-                    onChange={this.onChange}
-                    label='initial O2'
-                    units='%'
-                    id='initialO2'
-                    value={this.state.initialO2}
-                    min='0'
-                    max='100'
-                    step='.1'
-                />
-                <NumberInput
-                    onChange={this.onChange}
-                    label='desired final pressure'
-                    units='psi'
-                    id='finalPressure'
-                    value={this.state.finalPressure}
-                    step='100'
-                />
-                <NumberInput
-                    onChange={this.onChange}
-                    label='desired O2'
-                    units='%'
-                    id='finalO2'
-                    value={this.state.finalO2}
-                    min='0'
-                    max='100'
-                    step='.1'
-                />
-                <NumberInput
-                    onChange={this.onChange}
-                    label='source gas O2 concentration'
-                    units='%'
-                    id='fillO2'
-                    value={this.state.fillO2}
-                    min='0'
-                    max='100'
-                    step='.1'
-                />
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Pressure</th>
+                          <th>O2</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <NumberInput
+                                onChange={this.onChange}
+                                label='initial'
+                                units='psi'
+                                id='initialPressure'
+                                value={this.state.initialPressure}
+                                step='100'
+                            />
+                          </td>
+                          <td>
+                            <NumberInput
+                                onChange={this.onChange}
+                                label='initial'
+                                units='%'
+                                id='initialO2'
+                                value={this.state.initialO2}
+                                min='0'
+                                max='100'
+                                step='.1'
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <NumberInput
+                                onChange={this.onChange}
+                                label='final'
+                                units='psi'
+                                id='finalPressure'
+                                value={this.state.finalPressure}
+                                step='100'
+                            />
+                          </td>
+                          <td>
+                            <NumberInput
+                                onChange={this.onChange}
+                                label='desired'
+                                units='%'
+                                id='finalO2'
+                                value={this.state.finalO2}
+                                min='0'
+                                max='100'
+                                step='.1'
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <NumberInput
+                        onChange={this.onChange}
+                        label='source gas O2 concentration'
+                        units='%'
+                        id='fillO2'
+                        value={this.state.fillO2}
+                        min='0'
+                        max='100'
+                        step='.1'
+                    />
                 </div>
                 {O2Add ? 
                     <div>
-                        Add O2 to {O2Add} <br/>
-                        Add {this.state.fillO2}% to {this.state.finalPressure} <br/>
+                        <p>
+                            Add 100% O2 to <span className="bold">{O2Add}</span>psi <br/>
+                            Add {this.state.fillO2}% to <span className="bold">{this.state.finalPressure}</span>psi <br/>
+                        </p>
                     </div> :
                     <div>
-                        Add {this.state.fillO2}% to {this.state.finalPressure} <br/>
+                        <p>
+                            Add {this.state.fillO2}% O2 to <span className="bold">{this.state.finalPressure}</span>psi <br/>
+                        </p>
                     </div>
                     }
             </div>
