@@ -1,2 +1,8 @@
 # trimixCalc
-A calculator for calculating how to blend trimix (helium, oxygen and nitrogen) for scuba diving.
+An app for blending breathing gases for scuba diving:
+    - EAN (Enriched Air Nitrox)
+    - Trimix (helium, oxygen and nitrogen)
+
+A cost calculator is included for trimix fills.
+
+A live version is available [here](https://bm5w.github.io/trimixCalc/).
