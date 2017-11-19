@@ -1,0 +1,12 @@
+input {
+    background: red;
+    width: 40px;
+}
+label {
+    padding-right: 20px;
+}
+div.row {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
