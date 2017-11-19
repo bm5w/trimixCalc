@@ -20,7 +20,10 @@ class Button extends React.Component {
                 disabled={this.props.disabled}
                 onClick={this.handleChange}
             >
-                {this.props.text}
+                {this.props.disabled ? 
+                    <span className='bold'>{this.props.text}</span> :
+                    <span>{this.props.text}</span>
+                }
             </button>
         )
     }

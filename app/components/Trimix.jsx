@@ -29,8 +29,9 @@ class Cost extends React.Component {
         let O2Cost = _.round(O2V * this.state.O2Cost, 2);
         let He2Cost = _.round(He2V * this.state.He2Cost, 2);
         return(
-            <div className='center'>
-                <h4>Cost</h4>
+            <div>
+              <h4>Cost</h4>
+              <div className='center'>
                 <table>
                     <thead>
                         <tr>
@@ -76,6 +77,7 @@ class Cost extends React.Component {
                         </tr>
                      </tbody>   
                 </table>
+               </div>
              </div>
         )
     }
@@ -145,25 +147,6 @@ class Trimix extends React.Component {
               <div>
                 <h3>Trimix Calculator</h3>
                 <div>
-                    <div>
-                        <NumberInput
-                            onChange={this.onChange}
-                            label='cylinder volume'
-                            units='Ft<sup>3</sup>'
-                            id='totalVolume'
-                            value={this.state.totalVolume}
-                        />
-                    </div>
-                    <div>
-                        <NumberInput
-                            onChange={this.onChange}
-                            label='cylinder working pressure'
-                            units='psi'
-                            id='workingPressure'
-                            value={this.state.workingPressure}
-                        />
-                    </div>
-                    
                     <table>
                       <thead>
                         <tr>
@@ -266,6 +249,24 @@ class Trimix extends React.Component {
                         Add 100% O<sub>2</sub> to <span className="bold">{O2Add}</span>psi <br/>
                         Add {this.state.fillO2}% O<sub>2</sub> to <span className="bold">{this.state.finalPressure}</span>psi <br/>
                     </p> : <p> Impossible to mix </p>}
+                </div>
+                <div className='alignRight'>
+                    <NumberInput
+                        onChange={this.onChange}
+                        label='cylinder volume'
+                        units='Ft<sup>3</sup>'
+                        id='totalVolume'
+                        value={this.state.totalVolume}
+                    />
+                </div>
+                <div className='alignRight'>
+                    <NumberInput
+                        onChange={this.onChange}
+                        label='cylinder working pressure'
+                        units='psi'
+                        id='workingPressure'
+                        value={this.state.workingPressure}
+                    />
                 </div>
                 <Cost 
                     totalVolume={this.state.totalVolume} 
