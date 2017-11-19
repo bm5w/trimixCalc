@@ -27,6 +27,8 @@ class NumberInput extends React.Component {
                             this.props.min : undefined}
                     max={this.props.max ? 
                             this.props.max : undefined}
+                    step={this.props.step ? 
+                            this.props.step : undefined}
                 />
                 <span>{this.props.units}</span>
             </div>
