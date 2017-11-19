@@ -13,6 +13,15 @@ table{
 td {
     text-align: right;
 }
-.bold{
+.bold {
     font-weight: bold;
+}
+div.buttons {
+    display: flex;
+    width: 100%
+}
+div.center {
+    display: flex;
+    justify-content: center;
+    width: 100%
 }

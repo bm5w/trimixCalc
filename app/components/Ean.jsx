@@ -40,7 +40,8 @@ class Ean extends React.Component {
     render() {
         let O2Add = this.getO2Pressure();
         return (
-            <div>
+            <div className='center'>
+              <div>
                 <h3>EAN Calculator</h3>
                 <div>
                     <table>
@@ -128,6 +129,7 @@ class Ean extends React.Component {
                         </p>
                     </div>
                     }
+              </div>
             </div>
         )
     }

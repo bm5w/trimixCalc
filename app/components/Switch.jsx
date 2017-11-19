@@ -25,7 +25,7 @@ class Switch extends React.Component {
         let EANOn = this.state.EAN;
         return (
             <div>
-                <div>
+                <div className='buttons'>
                     <Button
                         disabled={this.state.EAN}
                         text='EAN'

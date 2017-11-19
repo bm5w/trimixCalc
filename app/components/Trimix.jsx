@@ -29,7 +29,7 @@ class Cost extends React.Component {
         let O2Cost = _.round(O2V * this.state.O2Cost, 2);
         let He2Cost = _.round(He2V * this.state.He2Cost, 2);
         return(
-            <div>
+            <div className='center'>
                 <h4>Cost</h4>
                 <table>
                     <thead>
@@ -141,7 +141,8 @@ class Trimix extends React.Component {
         let O2P = O2Add-He2Add;
         let He2P = He2Add-this.state.initialPressure;
         return (
-            <div>
+            <div className='center'>
+              <div>
                 <h3>Trimix Calculator</h3>
                 <div>
                     <div>
@@ -272,6 +273,7 @@ class Trimix extends React.Component {
                     O2P={O2P}
                     He2P={He2P}
                 />
+              </div>
             </div>
         )
     }
