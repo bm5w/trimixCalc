@@ -40,24 +40,7 @@ class Cost extends React.Component {
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                            <td>
-                                <NumberInput
-                                    onChange={this.onChange}
-                                    label='O2'
-                                    id='O2Cost'
-                                    value={this.state.O2Cost}
-                                    step='0.01'
-                                />
-                            </td>
-                            <td>
-                                {O2V}    
-                            </td>
-                            <td>
-                                {O2Cost}    
-                            </td>
-                        </tr>
-                        <tr>
+                       <tr>
                             <td>
                                 <NumberInput
                                     onChange={this.onChange}
@@ -71,7 +54,24 @@ class Cost extends React.Component {
                                 {He2V}    
                             </td>
                             <td>
-                                {He2Cost}
+                                <span className='bold'>{He2Cost}</span>    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <NumberInput
+                                    onChange={this.onChange}
+                                    label='O2'
+                                    id='O2Cost'
+                                    value={this.state.O2Cost}
+                                    step='0.01'
+                                />
+                            </td>
+                            <td>
+                                {O2V}
+                            </td>
+                            <td>
+                                <span className='bold'>{O2Cost}</span>    
                             </td>
                         </tr>
                      </tbody>   
