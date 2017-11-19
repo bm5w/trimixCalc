@@ -2,19 +2,98 @@ import React from 'react';
 import NumberInput from './NumberInput.jsx';
 import * as _ from 'lodash';
 
+class Cost extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            He2Cost: 1.00,
+            O2Cost: .10,
+        };
+
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(id, value) {
+        let initialValues = this.state;
+        initialValues[id] = value
+        this.setState(initialValues);
+    }
+
+    render() {
+        let totalV= this.props.totalVolume;
+        let workingP= this.props.workingPressure;
+        let O2P = this.props.O2P;
+        let He2P = this.props.He2P;
+        let O2V = _.round(this.props.O2P*totalV/workingP, 2);
+        let He2V = _.round(this.props.He2P*totalV/workingP, 2);
+        let O2Cost = _.round(O2V * this.state.O2Cost, 2);
+        let He2Cost = _.round(He2V * this.state.He2Cost, 2);
+        return(
+            <div>
+                <h4>Cost</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cost ($/Ft^3)</th>
+                            <th>Volume (Ft^3)</th>
+                            <th>Cost ($)</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                            <td>
+                                <NumberInput
+                                    onChange={this.onChange}
+                                    label='O2'
+                                    id='O2Cost'
+                                    value={this.state.O2Cost}
+                                    step='0.01'
+                                />
+                            </td>
+                            <td>
+                                {O2V}    
+                            </td>
+                            <td>
+                                {O2Cost}    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <NumberInput
+                                    onChange={this.onChange}
+                                    label='He2'
+                                    id='He2Cost'
+                                    value={this.state.He2Cost}
+                                    step='0.01'
+                                />
+                            </td>
+                            <td>
+                                {He2V}    
+                            </td>
+                            <td>
+                                {He2Cost}
+                            </td>
+                        </tr>
+                     </tbody>   
+                </table>
+             </div>
+        )
+    }
+}
 
 class Trimix extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             totalVolume: 200,
+            workingPressure: 3442,
             initialPressure: 0,
             finalPressure: 3500,
-            initialO2: 32.0,
-            finalO2: 32.0,
-            initialHe2: 25.0,
-            finalHe2: 25.0,
-            fillO2: 20.9
+            initialO2: 18.0,
+            finalO2: 18.0,
+            initialHe2: 45.0,
+            finalHe2: 45.0,
+            fillO2: 32.0
         };
 
         this.onChange = this.onChange.bind(this);
@@ -59,10 +138,31 @@ class Trimix extends React.Component {
     render() {
         let He2Add = this.getHe2Pressure();
         let O2Add = this.getO2Pressure();
+        let O2P = O2Add-He2Add;
+        let He2P = He2Add-this.state.initialPressure;
         return (
             <div>
                 <h3>Trimix Calculator</h3>
                 <div>
+                    <div>
+                        <NumberInput
+                            onChange={this.onChange}
+                            label='cylinder volume'
+                            units='Ft^3'
+                            id='totalVolume'
+                            value={this.state.totalVolume}
+                        />
+                    </div>
+                    <div>
+                        <NumberInput
+                            onChange={this.onChange}
+                            label='cylinder working pressure'
+                            units='psi'
+                            id='workingPressure'
+                            value={this.state.workingPressure}
+                        />
+                    </div>
+                    
                     <table>
                       <thead>
                         <tr>
@@ -165,6 +265,12 @@ class Trimix extends React.Component {
                         Add {this.state.fillO2}% to <span className="bold">{this.state.finalPressure}</span>psi <br/>
                     </p> : <p> Impossible to mix </p>}
                 </div>
+                <Cost 
+                    totalVolume={this.state.totalVolume} 
+                    workingPressure={this.state.workingPressure}
+                    O2P={O2P}
+                    He2P={He2P}
+                />
             </div>
         )
     }
