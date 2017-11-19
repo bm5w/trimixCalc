@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "NODE_ENV='production' webpack -p",
-    "deploy": "npm run build"
-
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "babel": {
     "presets": [
