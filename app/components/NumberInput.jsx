@@ -13,9 +13,10 @@ class NumberInput extends React.Component {
     }
 
     render() {
+        let test = {__html:this.props.units};
         return (
             <div className='row'>
-                <label className='header' htmlFor={this.props.id}>{this.props.label}:</label>
+                <label className='header' htmlFor={this.props.id}>{this.props.label}</label>
                 <input
                     type='number' 
                     id={this.props.id}
@@ -30,7 +31,7 @@ class NumberInput extends React.Component {
                     step={this.props.step ? 
                             this.props.step : undefined}
                 />
-                <span>{this.props.units}</span>
+                <span dangerouslySetInnerHTML={test}></span>
             </div>
         )
 

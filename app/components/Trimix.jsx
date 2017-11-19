@@ -148,7 +148,7 @@ class Trimix extends React.Component {
                         <NumberInput
                             onChange={this.onChange}
                             label='cylinder volume'
-                            units='Ft^3'
+                            units='Ft<sup>3</sup>'
                             id='totalVolume'
                             value={this.state.totalVolume}
                         />
@@ -166,6 +166,7 @@ class Trimix extends React.Component {
                     <table>
                       <thead>
                         <tr>
+                          <th></th>
                           <th>Pressure</th>
                           <th>O2</th>
                           <th>He2</th>
@@ -174,9 +175,11 @@ class Trimix extends React.Component {
                       <tbody>
                         <tr>
                           <td>
+                            <span className='bold'>initial:</span>
+                          </td>
+                          <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='initial'
                                 units='psi'
                                 id='initialPressure'
                                 value={this.state.initialPressure}
@@ -186,7 +189,6 @@ class Trimix extends React.Component {
                           <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='initial'
                                 units='%'
                                 id='initialO2'
                                 value={this.state.initialO2}
@@ -198,7 +200,6 @@ class Trimix extends React.Component {
                           <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='initial'
                                 units='%'
                                 id='initialHe2'
                                 value={this.state.initialHe2}
@@ -210,9 +211,11 @@ class Trimix extends React.Component {
                         </tr>
                         <tr>
                           <td>
+                            <span className='bold'>final:</span>
+                          </td>
+                          <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='final'
                                 units='psi'
                                 id='finalPressure'
                                 value={this.state.finalPressure}
@@ -222,7 +225,6 @@ class Trimix extends React.Component {
                           <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='desired'
                                 units='%'
                                 id='finalO2'
                                 value={this.state.finalO2}
@@ -234,7 +236,6 @@ class Trimix extends React.Component {
                           <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='desired'
                                 units='%'
                                 id='finalHe2'
                                 value={this.state.finalHe2}

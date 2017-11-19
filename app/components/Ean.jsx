@@ -41,11 +41,12 @@ class Ean extends React.Component {
         let O2Add = this.getO2Pressure();
         return (
             <div>
-                <h3>Ean Calculator</h3>
+                <h3>EAN Calculator</h3>
                 <div>
                     <table>
                       <thead>
                         <tr>
+                          <th></th>
                           <th>Pressure</th>
                           <th>O2</th>
                         </tr>
@@ -53,9 +54,11 @@ class Ean extends React.Component {
                       <tbody>
                         <tr>
                           <td>
+                            <span className='bold'>initial:</span>
+                          </td>
+                          <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='initial'
                                 units='psi'
                                 id='initialPressure'
                                 value={this.state.initialPressure}
@@ -65,7 +68,6 @@ class Ean extends React.Component {
                           <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='initial'
                                 units='%'
                                 id='initialO2'
                                 value={this.state.initialO2}
@@ -77,9 +79,11 @@ class Ean extends React.Component {
                         </tr>
                         <tr>
                           <td>
+                            <span className='bold'>final:</span>
+                          </td>
+                          <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='final'
                                 units='psi'
                                 id='finalPressure'
                                 value={this.state.finalPressure}
@@ -89,7 +93,6 @@ class Ean extends React.Component {
                           <td>
                             <NumberInput
                                 onChange={this.onChange}
-                                label='desired'
                                 units='%'
                                 id='finalO2'
                                 value={this.state.finalO2}
