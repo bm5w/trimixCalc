@@ -34,8 +34,8 @@ class Cost extends React.Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Cost ($/Ft^3)</th>
-                            <th>Volume (Ft^3)</th>
+                            <th>Cost ($/Ft<sup>3</sup>)</th>
+                            <th>Volume (Ft<sup>3</sup>)</th>
                             <th>Cost ($)</th>
                         </tr>
                      </thead>
@@ -44,7 +44,7 @@ class Cost extends React.Component {
                             <td>
                                 <NumberInput
                                     onChange={this.onChange}
-                                    label='He2'
+                                    label='He<sub>2</sub>'
                                     id='He2Cost'
                                     value={this.state.He2Cost}
                                     step='0.01'
@@ -61,7 +61,7 @@ class Cost extends React.Component {
                             <td>
                                 <NumberInput
                                     onChange={this.onChange}
-                                    label='O2'
+                                    label='O<sub>2</sub>'
                                     id='O2Cost'
                                     value={this.state.O2Cost}
                                     step='0.01'
@@ -168,8 +168,8 @@ class Trimix extends React.Component {
                         <tr>
                           <th></th>
                           <th>Pressure</th>
-                          <th>O2</th>
-                          <th>He2</th>
+                          <th>O<sub>2</sub></th>
+                          <th>He<sub>2</sub></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -249,7 +249,7 @@ class Trimix extends React.Component {
                     </table>
                     <NumberInput
                         onChange={this.onChange}
-                        label='source gas O2 concentration'
+                        label='source gas O<sub>2</sub> concentration'
                         units='%'
                         id='fillO2'
                         value={this.state.fillO2}
@@ -261,9 +261,9 @@ class Trimix extends React.Component {
                 <div>
                     {(this.state.finalPressure > O2Add && this.state.finalPressure > He2Add) ?
                     <p>
-                        Add 100% He2 to <span className="bold">{He2Add}</span>psi <br/>
-                        Add 100% O2 to <span className="bold">{O2Add}</span>psi <br/>
-                        Add {this.state.fillO2}% to <span className="bold">{this.state.finalPressure}</span>psi <br/>
+                        Add 100% He<sub>2</sub> to <span className="bold">{He2Add}</span>psi <br/>
+                        Add 100% O<sub>2</sub> to <span className="bold">{O2Add}</span>psi <br/>
+                        Add {this.state.fillO2}% O<sub>2</sub> to <span className="bold">{this.state.finalPressure}</span>psi <br/>
                     </p> : <p> Impossible to mix </p>}
                 </div>
                 <Cost 

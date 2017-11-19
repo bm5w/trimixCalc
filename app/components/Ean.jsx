@@ -48,7 +48,7 @@ class Ean extends React.Component {
                         <tr>
                           <th></th>
                           <th>Pressure</th>
-                          <th>O2</th>
+                          <th>O<sub>2</sub></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -106,7 +106,7 @@ class Ean extends React.Component {
                     </table>
                     <NumberInput
                         onChange={this.onChange}
-                        label='source gas O2 concentration'
+                        label='source gas O<sub>2</sub> concentration'
                         units='%'
                         id='fillO2'
                         value={this.state.fillO2}
@@ -118,13 +118,13 @@ class Ean extends React.Component {
                 {O2Add ? 
                     <div>
                         <p>
-                            Add 100% O2 to <span className="bold">{O2Add}</span>psi <br/>
-                            Add {this.state.fillO2}% to <span className="bold">{this.state.finalPressure}</span>psi <br/>
+                            Add 100% O<sub>2</sub> to <span className="bold">{O2Add}</span>psi <br/>
+                            Add {this.state.fillO2}% O<sub>2</sub> to <span className="bold">{this.state.finalPressure}</span>psi <br/>
                         </p>
                     </div> :
                     <div>
                         <p>
-                            Add {this.state.fillO2}% O2 to <span className="bold">{this.state.finalPressure}</span>psi <br/>
+                            Add {this.state.fillO2}% O<sub>2</sub> to <span className="bold">{this.state.finalPressure}</span>psi <br/>
                         </p>
                     </div>
                     }

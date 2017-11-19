@@ -13,16 +13,17 @@ class NumberInput extends React.Component {
     }
 
     render() {
-        let test = {__html:this.props.units};
+        let units = {__html:this.props.units};
+        let label = {__html:this.props.label};
         return (
             <div className='row'>
-                <label className='header' htmlFor={this.props.id}>{this.props.label}</label>
+                <label className='header' htmlFor={this.props.id} dangerouslySetInnerHTML={label}></label>
                 <input
                     type='number' 
                     id={this.props.id}
                     value={this.props.value}
                     onChange={this.handleChange}
-                    label={this.props.label}
+                    label={label}
                     required
                     min={this.props.min ? 
                             this.props.min : undefined}
@@ -31,7 +32,7 @@ class NumberInput extends React.Component {
                     step={this.props.step ? 
                             this.props.step : undefined}
                 />
-                <span dangerouslySetInnerHTML={test}></span>
+                <span dangerouslySetInnerHTML={units}></span>
             </div>
         )
 
