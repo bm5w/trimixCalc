@@ -6,7 +6,7 @@ class Cost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            He2Cost: 1.00,
+            HeCost: 1.00,
             O2Cost: .10,
         };
 
@@ -23,11 +23,11 @@ class Cost extends React.Component {
         let totalV= this.props.totalVolume;
         let workingP= this.props.workingPressure;
         let O2P = this.props.O2P;
-        let He2P = this.props.He2P;
+        let HeP = this.props.HeP;
         let O2V = _.round(this.props.O2P*totalV/workingP, 2);
-        let He2V = _.round(this.props.He2P*totalV/workingP, 2);
+        let HeV = _.round(this.props.HeP*totalV/workingP, 2);
         let O2Cost = _.round(O2V * this.state.O2Cost, 2);
-        let He2Cost = _.round(He2V * this.state.He2Cost, 2);
+        let HeCost = _.round(HeV * this.state.HeCost, 2);
         return(
             <div>
               <h4>Cost</h4>
@@ -37,7 +37,7 @@ class Cost extends React.Component {
                         <tr>
                           <th></th>
                           <th>O<sub>2</sub></th>
-                          <th>He<sub>2</sub></th>
+                          <th>He</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -56,8 +56,8 @@ class Cost extends React.Component {
                             <td>
                                 <NumberInput
                                     onChange={this.onChange}
-                                    id='He2Cost'
-                                    value={this.state.He2Cost}
+                                    id='HeCost'
+                                    value={this.state.HeCost}
                                     step='0.01'
                                 />
                             </td>
@@ -70,7 +70,7 @@ class Cost extends React.Component {
                                 {O2V}
                             </td>
                             <td>
-                                {He2V}    
+                                {HeV}    
                             </td>
                         </tr>
                         <tr>
@@ -81,7 +81,7 @@ class Cost extends React.Component {
                                 <span className='bold'>{O2Cost}</span>    
                             </td>
                             <td>
-                                <span className='bold'>{He2Cost}</span>    
+                                <span className='bold'>{HeCost}</span>    
                             </td>
                         </tr>
                      </tbody>   
@@ -102,14 +102,14 @@ class Trimix extends React.Component {
             finalPressure: 3500,
             initialO2: 18.0,
             finalO2: 18.0,
-            initialHe2: 45.0,
-            finalHe2: 45.0,
+            initialHe: 45.0,
+            finalHe: 45.0,
             fillO2: 32.0
         };
 
         this.onChange = this.onChange.bind(this);
         this.getO2Pressure = this.getO2Pressure.bind(this);
-        this.getHe2Pressure = this.getHe2Pressure.bind(this);
+        this.getHePressure = this.getHePressure.bind(this);
     } 
 
     onChange(id, value){
@@ -125,32 +125,32 @@ class Trimix extends React.Component {
         let Cf = Number(this.state.finalO2/100);
 
         let fillO2Conc = Number(this.state.fillO2/100);
-        let PHe2 = this.getHe2Pressure()-Pi;
+        let PHe = this.getHePressure()-Pi;
         
-        let psiO2 = (Cf*Pf + fillO2Conc*Pi - fillO2Conc*Pf - Ci*Pi + fillO2Conc*PHe2)/(1-fillO2Conc);
-        psiO2 = psiO2 + PHe2 + Pi;
+        let psiO2 = (Cf*Pf + fillO2Conc*Pi - fillO2Conc*Pf - Ci*Pi + fillO2Conc*PHe)/(1-fillO2Conc);
+        psiO2 = psiO2 + PHe + Pi;
         psiO2 = _.round(psiO2, 0);
         return psiO2;
     }
 
-    getHe2Pressure(){
+    getHePressure(){
         let Pi= Number(this.state.initialPressure);
         let Pf= Number(this.state.finalPressure);
-        let Ci = Number(this.state.initialHe2/100);
-        let Cf = Number(this.state.finalHe2/100);
+        let Ci = Number(this.state.initialHe/100);
+        let Cf = Number(this.state.finalHe/100);
 
-        let fillHe2Conc = 0;
+        let fillHeConc = 0;
         
-        let psiHe2 = (Cf*Pf + fillHe2Conc*Pi - fillHe2Conc*Pf - Ci*Pi)/(1-fillHe2Conc);
-        psiHe2 = _.round(Pi+psiHe2, 0);
-        return psiHe2;
+        let psiHe = (Cf*Pf + fillHeConc*Pi - fillHeConc*Pf - Ci*Pi)/(1-fillHeConc);
+        psiHe = _.round(Pi+psiHe, 0);
+        return psiHe;
     }
 
     render() {
-        let He2Add = this.getHe2Pressure();
+        let HeAdd = this.getHePressure();
         let O2Add = this.getO2Pressure();
-        let O2P = O2Add-He2Add;
-        let He2P = He2Add-this.state.initialPressure;
+        let O2P = O2Add-HeAdd;
+        let HeP = HeAdd-this.state.initialPressure;
         return (
             <div className='center'>
               <div>
@@ -162,7 +162,7 @@ class Trimix extends React.Component {
                           <th></th>
                           <th>Pressure</th>
                           <th>O<sub>2</sub></th>
-                          <th>He<sub>2</sub></th>
+                          <th>He</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -194,8 +194,8 @@ class Trimix extends React.Component {
                             <NumberInput
                                 onChange={this.onChange}
                                 units='%'
-                                id='initialHe2'
-                                value={this.state.initialHe2}
+                                id='initialHe'
+                                value={this.state.initialHe}
                                 min='0'
                                 max='100'
                                 step='.1'
@@ -230,8 +230,8 @@ class Trimix extends React.Component {
                             <NumberInput
                                 onChange={this.onChange}
                                 units='%'
-                                id='finalHe2'
-                                value={this.state.finalHe2}
+                                id='finalHe'
+                                value={this.state.finalHe}
                                 min='0'
                                 max='100'
                                 step='.1'
@@ -252,9 +252,9 @@ class Trimix extends React.Component {
                     />
                 </div>
                 <div>
-                    {(this.state.finalPressure > O2Add && this.state.finalPressure > He2Add) ?
+                    {(this.state.finalPressure > O2Add && this.state.finalPressure > HeAdd && O2Add > HeAdd) ?
                     <p>
-                        Add 100% He<sub>2</sub> to <span className="bold">{He2Add}</span>psi <br/>
+                        Add 100% He to <span className="bold">{HeAdd}</span>psi <br/>
                         Add 100% O<sub>2</sub> to <span className="bold">{O2Add}</span>psi <br/>
                         Add {this.state.fillO2}% O<sub>2</sub> to <span className="bold">{this.state.finalPressure}</span>psi <br/>
                     </p> : <p> Impossible to mix </p>}
@@ -281,7 +281,7 @@ class Trimix extends React.Component {
                     totalVolume={this.state.totalVolume} 
                     workingPressure={this.state.workingPressure}
                     O2P={O2P}
-                    He2P={He2P}
+                    HeP={HeP}
                 />
               </div>
             </div>
